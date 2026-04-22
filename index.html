@@ -3,33 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Concurso de Likes - Obras de Torata | Municipalidad Distrital de Torata</title>
-    <meta name="description" content="Sigue en tiempo real la competencia de likes en los videos de seguridad de las obras del Distrito de Torata. ¡Vota por tu obra favorita!">
-    <meta name="keywords" content="Torata, obras, concurso, likes, Facebook, seguridad, municipalidad">
-    <meta property="og:title" content="Concurso de Likes - Obras de Torata">
-    <meta property="og:description" content="¡Vota por el mejor video de seguridad de las obras de Torata!">
-    <meta property="og:type" content="website">
+    <title>Concurso de Likes - Obras de Torata</title>
+    <meta name="description" content="Competencia de likes en videos de seguridad de las obras del Distrito de Torata.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Animated background particles -->
     <div class="bg-particles" id="bgParticles"></div>
 
-    <!-- Header -->
-    <header class="header" id="header">
+    <header class="header">
         <div class="header-content">
             <div class="logo-section">
                 <div class="logo-icon">
-                    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="4" y="20" width="8" height="24" rx="2" fill="currentColor" opacity="0.7"/>
-                        <rect x="14" y="12" width="8" height="32" rx="2" fill="currentColor" opacity="0.85"/>
-                        <rect x="24" y="6" width="8" height="38" rx="2" fill="currentColor"/>
-                        <rect x="34" y="16" width="8" height="28" rx="2" fill="currentColor" opacity="0.7"/>
-                        <path d="M8 18L24 4L40 14" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
-                    </svg>
+                    <svg viewBox="0 0 48 48" fill="none"><rect x="4" y="20" width="8" height="24" rx="2" fill="currentColor" opacity="0.7"/><rect x="14" y="12" width="8" height="32" rx="2" fill="currentColor" opacity="0.85"/><rect x="24" y="6" width="8" height="38" rx="2" fill="currentColor"/><rect x="34" y="16" width="8" height="28" rx="2" fill="currentColor" opacity="0.7"/></svg>
                 </div>
                 <div>
                     <h1 class="header-title">Concurso de Likes</h1>
@@ -37,87 +25,47 @@
                 </div>
             </div>
             <div class="header-stats">
-                <div class="stat-pill">
-                    <span class="stat-icon">🏗️</span>
-                    <span class="stat-value" id="totalObras">13</span>
-                    <span class="stat-label">Obras</span>
-                </div>
-                <div class="stat-pill">
-                    <span class="stat-icon">❤️</span>
-                    <span class="stat-value" id="totalLikes">0</span>
-                    <span class="stat-label">Total Likes</span>
-                </div>
-                <div class="stat-pill live-pill">
-                    <span class="live-dot"></span>
-                    <span class="stat-label">EN VIVO</span>
-                </div>
+                <div class="stat-pill"><span class="stat-icon">🏗️</span><span class="stat-value">13</span><span class="stat-label">Obras</span></div>
+                <div class="stat-pill"><span class="stat-icon">❤️</span><span class="stat-value" id="totalLikes">0</span><span class="stat-label">Total Likes</span></div>
+                <div class="stat-pill" id="dbStatus"><span class="stat-icon" id="dbIcon">🔄</span><span class="stat-label" id="dbLabel">Conectando...</span></div>
             </div>
         </div>
     </header>
 
-    <!-- Main Content -->
     <main class="main-content">
-        <!-- Podium Section -->
-        <section class="podium-section" id="podiumSection">
-            <h2 class="section-title">
-                <span class="title-icon">🏆</span>
-                Podio de Ganadores
-            </h2>
-            <div class="podium-container" id="podiumContainer">
-                <!-- Filled by JS -->
-            </div>
+        <!-- Podium -->
+        <section class="podium-section">
+            <h2 class="section-title"><span class="title-icon">🏆</span>Podio de Ganadores</h2>
+            <div class="podium-container" id="podiumContainer"></div>
         </section>
 
         <!-- Controls -->
         <section class="controls-section">
             <div class="controls-bar">
                 <div class="search-container">
-                    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="11" cy="11" r="8"/>
-                        <path d="m21 21-4.3-4.3"/>
-                    </svg>
+                    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
                     <input type="text" id="searchInput" class="search-input" placeholder="Buscar obra...">
                 </div>
                 <div class="view-controls">
-                    <button class="btn-sort active" id="btnSortLikes" data-sort="likes">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
-                            <path d="M12 20V4M5 11l7-7 7 7"/>
-                        </svg>
-                        Por Likes
-                    </button>
-                    <button class="btn-sort" id="btnSortName" data-sort="name">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
-                            <path d="M4 6h16M4 12h10M4 18h6"/>
-                        </svg>
-                        Alfabético
-                    </button>
-                    <button class="btn-update" id="btnUpdateAll" title="Actualizar todos los likes">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
-                            <path d="M21 12a9 9 0 11-6.219-8.56"/>
-                            <polyline points="21,3 21,9 15,9"/>
-                        </svg>
-                        Actualizar Likes
+                    <button class="btn-sort active" id="btnSortLikes">↑ Por Likes</button>
+                    <button class="btn-sort" id="btnSortName">A-Z Alfabético</button>
+                    <button class="btn-update" id="btnUpdateAll">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M21 12a9 9 0 11-6.219-8.56"/><polyline points="21,3 21,9 15,9"/></svg>
+                        Actualizar Todos los Likes
                     </button>
                 </div>
             </div>
         </section>
 
-        <!-- Ranking Cards -->
-        <section class="ranking-section" id="rankingSection">
-            <div class="ranking-grid" id="rankingGrid">
-                <!-- Filled by JS -->
-            </div>
+        <!-- Ranking -->
+        <section class="ranking-section">
+            <div class="ranking-grid" id="rankingGrid"></div>
         </section>
 
-        <!-- Chart Section -->
-        <section class="chart-section" id="chartSection">
-            <h2 class="section-title">
-                <span class="title-icon">📊</span>
-                Comparativa de Likes
-            </h2>
-            <div class="chart-container" id="chartContainer">
-                <canvas id="likesChart"></canvas>
-            </div>
+        <!-- Chart -->
+        <section class="chart-section">
+            <h2 class="section-title"><span class="title-icon">📊</span>Comparativa de Likes</h2>
+            <div class="chart-container"><canvas id="likesChart"></canvas></div>
         </section>
     </main>
 
@@ -125,59 +73,56 @@
     <div class="modal-overlay" id="updateModal">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24">
-                        <path d="M21 12a9 9 0 11-6.219-8.56"/>
-                        <polyline points="21,3 21,9 15,9"/>
-                    </svg>
-                    Actualizar Likes
-                </h3>
+                <h3 class="modal-title">🔄 Actualizar Likes</h3>
                 <button class="modal-close" id="modalClose">&times;</button>
             </div>
             <div class="modal-body">
-                <p class="modal-instructions">
-                    Haz clic en el enlace de cada video, revisa el número de likes y actualízalo aquí. 
-                    Los cambios se guardan automáticamente.
-                </p>
-                <div class="modal-list" id="modalList">
-                    <!-- Filled by JS -->
+                <div class="modal-instructions">
+                    <p>📋 <strong>Instrucciones:</strong></p>
+                    <ol>
+                        <li>Haz clic en <strong>"Abrir ▸"</strong> para ver cada video en Facebook</li>
+                        <li>Revisa el número de likes (reacciones) del video</li>
+                        <li>Ingresa el número aquí</li>
+                        <li>Clic en <strong>"Guardar Todo"</strong> para actualizar</li>
+                    </ol>
+                    <p class="modal-note">💾 Los datos se guardan en la nube. Todos verán los cambios.</p>
                 </div>
+                <div class="modal-list" id="modalList"></div>
             </div>
             <div class="modal-footer">
-                <button class="btn-save" id="btnSaveAll">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
-                        <polyline points="20,6 9,17 4,12"/>
-                    </svg>
-                    Guardar Todo
-                </button>
+                <span class="modal-last-update" id="modalLastUpdate"></span>
+                <button class="btn-save" id="btnSaveAll">💾 Guardar Todo en Firebase</button>
             </div>
         </div>
     </div>
 
-    <!-- Single Update Popover -->
+    <!-- Single Update -->
     <div class="popover-overlay" id="singleUpdatePopover">
         <div class="popover-content">
-            <h4 class="popover-title" id="popoverTitle">Actualizar Likes</h4>
+            <h4 class="popover-title">Actualizar Likes</h4>
             <p class="popover-obra" id="popoverObra"></p>
+            <a href="#" target="_blank" id="popoverVideoLink" class="popover-video-link">📱 Abrir video en Facebook ▸</a>
             <div class="popover-input-group">
-                <label>Nuevo conteo de likes:</label>
+                <label>Ingresa los likes que ves:</label>
                 <input type="number" id="popoverLikesInput" class="popover-input" min="0" placeholder="0">
             </div>
             <div class="popover-actions">
                 <button class="btn-cancel" id="popoverCancel">Cancelar</button>
-                <button class="btn-confirm" id="popoverConfirm">Guardar</button>
+                <button class="btn-confirm" id="popoverConfirm">💾 Guardar</button>
             </div>
         </div>
     </div>
 
-    <!-- Footer -->
     <footer class="footer">
-        <div class="footer-content">
-            <p>Municipalidad Distrital de Torata &bull; Concurso de Videos de Seguridad 2025</p>
-            <p class="footer-note">Última actualización: <span id="lastUpdate">--</span></p>
-        </div>
+        <p>Municipalidad Distrital de Torata &bull; Concurso de Videos de Seguridad 2025</p>
+        <p class="footer-note">Última actualización: <span id="lastUpdate">--</span></p>
     </footer>
 
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
     <script src="app.js"></script>
 </body>
 </html>

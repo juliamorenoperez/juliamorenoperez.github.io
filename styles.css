@@ -459,3 +459,30 @@ body {
 .toast.success .toast-icon { color: var(--accent-green); }
 @keyframes toastIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
 .toast-icon { font-size: 1.2rem; }
+.toast.warning { border-color: rgba(245,158,11,0.4); }
+.toast.warning .toast-icon { color: var(--accent-gold); }
+.toast.error { border-color: rgba(239,68,68,0.4); }
+.toast.error .toast-icon { color: var(--accent-red); }
+
+/* DB Status */
+.db-connected { background: rgba(16,185,129,0.1); border-color: rgba(16,185,129,0.3); }
+.db-disconnected { background: rgba(239,68,68,0.1); border-color: rgba(239,68,68,0.3); }
+.db-warning { background: rgba(245,158,11,0.1); border-color: rgba(245,158,11,0.3); }
+.db-error { background: rgba(239,68,68,0.1); border-color: rgba(239,68,68,0.3); }
+
+/* Modal instructions */
+.modal-instructions ol { padding-left: 1.25rem; margin: 0.5rem 0; }
+.modal-instructions li { margin-bottom: 0.25rem; }
+.modal-note { color: var(--accent-green); font-weight: 500; margin-top: 0.5rem; }
+.modal-footer { justify-content: space-between; align-items: center; }
+.modal-last-update { font-size: 0.75rem; color: var(--text-muted); }
+
+/* Popover video link */
+.popover-video-link {
+    display: block; text-align: center; margin-bottom: 1rem;
+    padding: 0.6rem 1rem; border-radius: var(--radius-sm);
+    background: rgba(24,119,242,0.1); border: 1px solid rgba(24,119,242,0.3);
+    color: #1877f2; text-decoration: none; font-weight: 600; font-size: 0.85rem;
+    transition: all 0.3s;
+}
+.popover-video-link:hover { background: rgba(24,119,242,0.2); }
