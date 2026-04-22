@@ -2,13 +2,13 @@
 // FIREBASE CONFIG - REPLACE WITH YOUR OWN
 // ==========================================
 const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_PROJECT.firebaseapp.com",
-    databaseURL: "https://YOUR_PROJECT-default-rtdb.firebaseio.com",
-    projectId: "YOUR_PROJECT",
-    storageBucket: "YOUR_PROJECT.appspot.com",
-    messagingSenderId: "000000000000",
-    appId: "YOUR_APP_ID"
+    apiKey: "AIzaSyDh1JocXIWxD0-8es7EWVqJIMQGYlto94Q",
+    authDomain: "torata-be96b.firebaseapp.com",
+    databaseURL: "https://torata-be96b-default-rtdb.firebaseio.com",
+    projectId: "torata-be96b",
+    storageBucket: "torata-be96b.firebasestorage.app",
+    messagingSenderId: "235335081728",
+    appId: "1:235335081728:web:0288c6e4f6036d7f565de5"
 };
 
 // ==========================================
